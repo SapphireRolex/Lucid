@@ -1,6 +1,8 @@
 apt install curl
 
-apt-get updateapt-get install unzip -ycurl -fsSL https://deno.land/install.sh | sh
+apt-get update
+apt-get install unzip -y
+curl -fsSL https://deno.land/install.sh | sh
 
 export PATH="$HOME/.deno/bin:$PATH"
 
@@ -8,8 +10,15 @@ deno -v
 
 mkdir lucid
 
-import { Blockfrost, Lucid, Crypto } from "https://deno.land/x/lucid/mod.ts";// Provider selection// There are multiple builtin providers you can choose from in Lucid.// Blockfrost : previewbjWeyokguJArwoYZFioqk4hn8Pr5wcxU
-const lucid = new Lucid({
+import { Blockfrost, Lucid, Crypto } from "https://deno.land/x/lucid/mod.ts";
+
+// Provider selection
+// There are multiple builtin providers you can choose from in Lucid.
+
+// Blockfrost : previewbjWeyokguJArwoYZFioqk4hn8Pr5wcxU
+
+
+const lucid = new Lucid({
   provider: new Blockfrost(
     "https://cardano-preview.blockfrost.io/api/v0",
     "previewbjWeyokguJArwoYZFioqk4hn8Pr5wcxU",
