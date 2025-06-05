@@ -2,7 +2,10 @@
 
 -------------Setting Aiken & install extension Aiken-------------
 
-curl --proto '=https' --tlsv1.2 -LsSf https://install.aiken-lang.org | sh source $HOME/.aiken/bin/envapt install git (option)aikup
+curl --proto '=https' --tlsv1.2 -LsSf https://install.aiken-lang.org | sh 
+source $HOME/.aiken/bin/env
+apt install git (option)
+aikup
 
 aiken new aiken-lang/hello-world
 cd hello-world
