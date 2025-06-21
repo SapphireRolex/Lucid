@@ -74,18 +74,18 @@ if (!payment_hash) {
   throw new Error("Failed to extract payment hash from address");
 }
 
-//===============Đặt tên token và setting phí trả về platform==================
+
 const ma_khoa_hoc = fromText("BK02");
 
 
-//------Kê khai thông tin địa chỉ nhận fee của platform---------
+
 const payment_credential = Addresses.inspect(
   "addr_test1qz3vhmpcm2t25uyaz0g3tk7hjpswg9ud9am4555yghpm3r770t25gsqu47266lz7lsnl785kcnqqmjxyz96cddrtrhnsdzl228"
 ).payment?.hash;
 console.log(payment_credential);
 
 
-//-------Gọi và truyền thông tin định dạng của biến multiparams-----------
+//-------Gọi và truyền thông tin định dạng của biến multiparams theo mã khoá học-----------
 const validator = await readValidator();
 const Params = [Data.Bytes()];
 const parameterized_script = lucid.newScript(
@@ -104,7 +104,7 @@ const policyId = parameterized_script.toHash();
 const unit = policyId + fromText("BK02_VU_VAN_NAM");
 
 const mintRedeemer = Data.to(new Constr(0, []));
-// const mintRedeemer = Data.void()
+
 const recipient = "addr_test1qz3vhmpcm2t25uyaz0g3tk7hjpswg9ud9am4555yghpm3r770t25gsqu47266lz7lsnl785kcnqqmjxyz96cddrtrhnsdzl228";
 const tx = await lucid
   .newTx()
