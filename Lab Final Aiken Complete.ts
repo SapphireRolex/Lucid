@@ -105,22 +105,15 @@ const unit = policyId + fromText("BK02_VU_VAN_NAM");
 
 const mintRedeemer = Data.to(new Constr(0, []));
 
-const recipient = "addr_test1qz3vhmpcm2t25uyaz0g3tk7hjpswg9ud9am4555yghpm3r770t25gsqu47266lz7lsnl785kcnqqmjxyz96cddrtrhnsdzl228";
+const recipient1 = "addr_test1qz3vhmpcm2t25uyaz0g3tk7hjpswg9ud9am4555yghpm3r770t25gsqu47266lz7lsnl785kcnqqmjxyz96cddrtrhnsdzl228";
+const recipient2 = "addr_test1qz22wkszyt9kgqhk24670xz7ehs9tvlhq079rzy5vyekn5p5x065mhvs0z9p2gymxgguy3w0v5qnk39klvaapeqla97qsdltfy";
+const recipient3 = "addr_test1qrqdgvkh2vptvfac7prz45dm7x3pw6kpndmnkujk5wammn9jfxpftgmusjmzr5uvmasm5km5ytmtwh6llmf53ye440usnyh6zg";
 const tx = await lucid
   .newTx()
   .mint({ [unit]: 1n }, mintRedeemer)
-  .payTo(
-    "addr_test1qz22wkszyt9kgqhk24670xz7ehs9tvlhq079rzy5vyekn5p5x065mhvs0z9p2gymxgguy3w0v5qnk39klvaapeqla97qsdltfy",
-    { lovelace: 10000000n }
-  )
-    .payTo(
-    "addr_test1qrqdgvkh2vptvfac7prz45dm7x3pw6kpndmnkujk5wammn9jfxpftgmusjmzr5uvmasm5km5ytmtwh6llmf53ye440usnyh6zg",
-    { lovelace: 10000000n }
-  )
-  .payTo(recipient, {
-    [unit]: 1n,
-    lovelace: 10000000n      
-  })
+  .payTo(recipient1, {[unit]: 1n, lovelace: 10000000n })
+  .payTo(recipient2,{ lovelace: 10000000n })
+  .payTo(recipient3,{ lovelace: 10000000n })
   .attachScript(parameterized_script)
   .commit();
 
