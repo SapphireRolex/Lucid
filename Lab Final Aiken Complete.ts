@@ -1,4 +1,4 @@
-----------Tạo validator với cấu trúc mint và burn NFT-----------------
+//----------Tạo validator với cấu trúc mint và burn NFT-----------------
 
 use aiken/collection/dict
 use aiken/collection/list
@@ -48,7 +48,7 @@ fn find_output(outputs: List<Output>, asset_name: ByteArray, addr_cred: Address)
 }
 
 
-----------Lucid--------------
+//----------Lucid--------------
 
 
 import {  Blockfrost, Lucid, Addresses,fromHex,toHex,applyParamsToScript, Data, Constr,fromText } from "https://deno.land/x/lucid@0.20.9/mod.ts";
@@ -74,16 +74,12 @@ if (!payment_hash) {
   throw new Error("Failed to extract payment hash from address");
 }
 
-
-const ma_khoa_hoc = fromText("BK02");
-
-
-
 const payment_credential = Addresses.inspect(
   "addr_test1qz3vhmpcm2t25uyaz0g3tk7hjpswg9ud9am4555yghpm3r770t25gsqu47266lz7lsnl785kcnqqmjxyz96cddrtrhnsdzl228"
 ).payment?.hash;
 console.log(payment_credential);
 
+const ma_khoa_hoc = fromText("BK02");
 
 //-------Gọi và truyền thông tin định dạng của biến multiparams theo mã khoá học-----------
 const validator = await readValidator();
