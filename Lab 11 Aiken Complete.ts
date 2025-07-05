@@ -130,7 +130,27 @@ type RedeemerSchema = typeof RedeemerSchema;
 const Redeemer = () => Data.to({ value: fromText("Hello world!") }, RedeemerSchema); // "48656c6c6f20576f726c64" là chuỗi "Hello World" được mã hóa dưới dạng hex
 const lovelace_lock=50_100_123n
 
-// Lock UTxO ref ================================================================ export async function lockUtxoref(): Promise<string> {console.log("===== Lock UTxO Ref ===========================================================")console.log("")console.log("Datum lock_until: ", Number(d.lock_until));const tx = await lucid.newTx().payToContract(vesting_Address, {Inline: datum ,scriptRef: vesting_scripts.script, // adding plutusV3 script to output}, {}).validTo(Date.now() + 100000).commit();const signedTx = await tx.sign().commit();const txHash = await signedTx.submit();return txHash;}
+// Lock UTxO ref ================================================================ 
+
+export async function lockUtxoref(): Promise<string> {
+console.log("===== Lock UTxO Ref ===========================================================")
+console.log("")
+console.log("Datum lock_until: ", Number(d.lock_until));
+
+const tx = await lucid
+.newTx()
+.payToContract(vesting_Address, {
+Inline: datum ,
+scriptRef: vesting_scripts.script, // adding plutusV3 script to output
+}, {})
+.validTo(Date.now() + 100000)
+.commit();
+
+const signedTx = await tx.sign().commit();
+const txHash = await signedTx.submit();
+
+return txHash;
+}
 
 // Mở khóa UTxO (Khi unlock cần phải để ý địa chỉ đúng index của beneficiary)  
 
